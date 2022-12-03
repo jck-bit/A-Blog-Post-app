@@ -14,8 +14,8 @@ const userIds = [
 export const users = [
   {
     _id: userIds[0],
-    firstName: "test",
-    lastName: "me",
+    firstname: "test",
+    lastname: "me",
     email: "aaaaaaa@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p11.jpeg",
@@ -30,8 +30,8 @@ export const users = [
   },
   {
     _id: userIds[1],
-    firstName: "Steve",
-    lastName: "Ralph",
+    firstname: "Steve",
+    lastname: "Ralph",
     email: "thataaa@gmail.com",
     password: "$!FEAS@!O)_IDJda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p3.jpeg",
@@ -46,8 +46,8 @@ export const users = [
   },
   {
     _id: userIds[2],
-    firstName: "Some",
-    lastName: "Guy",
+    firstname: "Some",
+    lastname: "Guy",
     email: "someguy@gmail.com",
     password: "da39a3ee5e6b4b0d3255bfef95601890afd80709",
     picturePath: "p4.jpeg",
@@ -62,8 +62,8 @@ export const users = [
   },
   {
     _id: userIds[3],
-    firstName: "Whatcha",
-    lastName: "Doing",
+    firstname: "Whatcha",
+    lastname: "Doing",
     email: "whatchadoing@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p6.jpeg",
@@ -78,8 +78,8 @@ export const users = [
   },
   {
     _id: userIds[4],
-    firstName: "Jane",
-    lastName: "Doe",
+    firstname: "Jane",
+    lastname: "Doe",
     email: "janedoe@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p5.jpeg",
@@ -94,8 +94,8 @@ export const users = [
   },
   {
     _id: userIds[5],
-    firstName: "Harvey",
-    lastName: "Dunn",
+    firstname: "Harvey",
+    lastname: "Dunn",
     email: "harveydunn@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p7.jpeg",
@@ -110,8 +110,8 @@ export const users = [
   },
   {
     _id: userIds[6],
-    firstName: "Carly",
-    lastName: "Vowel",
+    firstname: "Carly",
+    lastname: "Vowel",
     email: "carlyvowel@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p8.jpeg",
@@ -126,8 +126,8 @@ export const users = [
   },
   {
     _id: userIds[7],
-    firstName: "Jessica",
-    lastName: "Dunn",
+    firstname: "Jessica",
+    lastname: "Dunn",
     email: "jessicadunn@gmail.com",
     password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
     picturePath: "p9.jpeg",
@@ -146,8 +146,8 @@ export const posts = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: userIds[1],
-    firstName: "Steve",
-    lastName: "Ralph",
+    firstname: "Steve",
+    lastname: "Ralph",
     location: "New York, CA",
     description: "Some really long random description",
     picturePath: "post1.jpeg",
@@ -167,8 +167,8 @@ export const posts = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: userIds[3],
-    firstName: "Whatcha",
-    lastName: "Doing",
+    firstname: "Whatcha",
+    lastname: "Doing",
     location: "Korea, CA",
     description:
       "Another really long random description. This one is longer than the previous one.",
@@ -190,8 +190,8 @@ export const posts = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: userIds[4],
-    firstName: "Jane",
-    lastName: "Doe",
+    firstname: "Jane",
+    lastname: "Doe",
     location: "Utah, CA",
     description:
       "This is the last really long random description. This one is longer than the previous one.",
@@ -214,8 +214,8 @@ export const posts = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: userIds[5],
-    firstName: "Harvey",
-    lastName: "Dunn",
+    firstname: "Harvey",
+    lastname: "Dunn",
     location: "Los Angeles, CA",
     description:
       "This is the last really long random description. This one is longer than the previous one. Man I'm bored. I'm going to keep typing until I run out of things to say.",
@@ -238,8 +238,8 @@ export const posts = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: userIds[6],
-    firstName: "Carly",
-    lastName: "Vowel",
+    firstname: "Carly",
+    lastname: "Vowel",
     location: "Chicago, IL",
     description:
       "Just a short description. I'm tired of typing. I'm going to play video games now.",
@@ -262,8 +262,8 @@ export const posts = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: userIds[7],
-    firstName: "Jessica",
-    lastName: "Dunn",
+    firstname: "Jessica",
+    lastname: "Dunn",
     location: "Washington, DC",
     description:
       "For the last time, I'm going to play video games now. I'm tired of typing. I'm going to play video games now.",
