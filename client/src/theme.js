@@ -29,7 +29,6 @@ export const colorTokens = {
     },
   };
 
-  
   // mui theme settings
   export const themeSettings = (mode) => {
     return {
@@ -43,6 +42,7 @@ export const colorTokens = {
                 main: colorTokens.primary[500],
                 light: colorTokens.primary[800],
               },
+              
               neutral: {
                 dark: colorTokens.grey[100],
                 main: colorTokens.grey[200],
