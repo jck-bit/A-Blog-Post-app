@@ -7,6 +7,7 @@ import {
     useTheme,
   } from "@mui/material";
 
+import Form from "./Form"
 
 const Login = () =>{
     const theme = useTheme();
@@ -23,7 +24,17 @@ const Login = () =>{
                 sociopidia
             </Typography>
         </Box>
-        <Box></Box>
+        <Box 
+           width={isNonMobileScreens ? "50%" :" 93%"}
+           p="2rem"
+           m="2rem auto"
+           borderRadius="1.5"
+           backgroundColor={theme.palette.background.alt}
+        >
+            <Typography fontWeight="500" variant="h5" sx={{mb: "1.5rem"}}>
+                Welcome to the social media of sociopaths
+            </Typography>
+        </Box>
     </Box>
     )
 }
