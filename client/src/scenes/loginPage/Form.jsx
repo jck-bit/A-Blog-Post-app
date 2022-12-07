@@ -57,7 +57,48 @@ export default function Form() {
     const isLogin = pageType ==="login";
     const isRegister= pageType === "register";
 
-    const handleFormSubmit = async(value, onSubmit) =>{}
+    const  register = async (values, onSubmitProps) =>{
+      //formData allows to send form info with image
+      const formData = new FormData()
+      for (let value in values){
+        formData.append(value, values[value])
+      }
+      formData.append('picturePath', values.picture.name)
+      const saved_user_response = await fetch('http://localhost:3500/auth/register',{
+        method:'POST',
+        body: formData
+      });
+      const saved_user = await saved_user_response.json()
+
+      onSubmitProps.resetForm()
+      if(saved_user) {
+        setPageType("login");
+      }
+    }
+
+    const login  = async (values, onSubmitProps) =>{
+      const logged_in_response = await fetch('http://localhost:3500/auth/login',{
+        method:'POST',
+        headers:{"content-Type":"application/json"},
+        body: JSON.stringify(values)
+      });
+      const loggedIn = await logged_in_response.json()
+      onSubmitProps.resetForm()
+      if(loggedIn){
+        dispatch(
+          setLogin({
+            user:loggedIn.user,
+            token:loggedIn.token
+          })
+        )
+        navigate("/home")
+      }
+    }
+
+    const handleFormSubmit = async(values, onSubmitProps) =>{
+      if(isLogin) await login(values, onSubmitProps)
+      if(isRegister) await register(values, onSubmitProps)
+    }
 
   return (
     <Formik onSubmit={handleFormSubmit}
@@ -66,13 +107,13 @@ export default function Form() {
      >
         {({
             values,
-            errros,
+            errors,
             touched,
             handleBlur,
             resetForm,
             handleChange,
-            handleValue,
-            handleSubmit
+            handleSubmit,
+            setFieldValue
         }) =>(
             <form onSubmit={handleSubmit}>
                 <Box 
@@ -91,8 +132,8 @@ export default function Form() {
                           onChange={handleChange}
                           value={values.firstname}
                           name="firstname"
-                          error={Boolean(touched.firstname) && Boolean(errros.firstname)}
-                          helperText={touched.firstname && errros.firstname}
+                          error={Boolean(touched.firstname) && Boolean(errors.firstname)}
+                          helperText={touched.firstname && errors.firstname}
                           sx={{gridColumn: "span 2"}}
                           />
                           
@@ -102,8 +143,8 @@ export default function Form() {
                           onChange={handleChange}
                           value={values.lastname}
                           name="lastname"
-                          error={Boolean(touched.lastname) && Boolean(errros.lastname)}
-                          helperText={touched.lastname && errros.lastname}
+                          error={Boolean(touched.lastname) && Boolean(errors.lastname)}
+                          helperText={touched.lastname && errors.lastname}
                           sx={{gridColumn: "span 2"}}
                           />
 
@@ -113,9 +154,9 @@ export default function Form() {
                           onChange={handleChange}
                           value={values.location}
                           name="location"
-                          error={Boolean(touched.location) && Boolean(errros.location)}
-                          helperText={touched.location && errros.location}
-                          sx={{gridColumn: "span 2"}}
+                          error={Boolean(touched.location) && Boolean(errors.location)}
+                          helperText={touched.location && errors.location}
+                          sx={{gridColumn: "span 4"}}
                           />
 
                          <TextField 
@@ -124,13 +165,103 @@ export default function Form() {
                           onChange={handleChange}
                           value={values.occupation}
                           name="occupation"
-                          error={Boolean(touched.occupation) && Boolean(errros.occupation)}
-                          helperText={touched.occupation && errros.occupation}
-                          sx={{gridColumn: "span 2"}}
+                          error={Boolean(touched.occupation) && Boolean(errors.occupation)}
+                          helperText={touched.occupation && errors.occupation}
+                          sx={{gridColumn: "span 4"}}
                           />
+                          <Box 
+                            gridColumn="span-4"
+                            border={`1px solid ${palette.neutral.medium}`}
+                            borderRadius="5px"
+                            p="1rem"
+                           >
+                           <Dropzone
+                              acceptedFiles=".jpg,.jpeg,.png"
+                              multiple={false}
+                              onDrop={(acceptedFiles) =>
+                                setFieldValue("picture", acceptedFiles[0])
+                              }
+                            >
+                              {({ getRootProps, getInputProps }) => (
+                                <Box
+                                  {...getRootProps()}
+                                  border={`2px dashed ${palette.primary.main}`}
+                                  p="1rem"
+                                  sx={{ "&:hover": { cursor: "pointer" } }}
+                                >
+                                  <input {...getInputProps()} />
+                                  {!values.picture ? (
+                                    <p>Add Picture Here</p>
+                                  ) : (
+                                    <FlexBetween>
+                                      <Typography>{values.picture.name}</Typography>
+                                      <EditOutlinedIcon />
+                                    </FlexBetween>
+                                  )}
+                                </Box>
+                              )}
+                            </Dropzone>
+                           </Box>
                         </>
                     )}
-                 </Box>
+
+                    <TextField
+                      label="Email"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.email}
+                      name="email"
+                      error={Boolean(touched.email) && Boolean(errors.email)}
+                      helperText={touched.email && errors.email}
+                      sx={{ gridColumn: "span 4" }}
+                    />
+
+                    <TextField
+                      label="password"
+                      type="password"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.password}
+                      name="password"
+                      error={Boolean(touched.password) && Boolean(errors.password)}
+                      helperText={touched.password && errors.password}
+                      sx={{ gridColumn: "span 4" }}
+                    />
+            </Box>
+            {/* buttons */}
+            <Box>
+            <Button
+              fullWidth
+              type="submit"
+              sx={{
+                m: "2rem 0",
+                p: "1rem",
+                backgroundColor: palette.primary.main,
+                color: palette.background.alt,
+                "&:hover": { color: palette.primary.main },
+              }}
+            >
+              {isLogin ? "LOGIN" : "REGISTER"}
+            </Button>
+            <Typography
+              onClick={() => {
+                setPageType(isLogin ? "register" : "login");
+                resetForm();
+              }}
+              sx={{
+                textDecoration: "underline",
+                color: palette.primary.main,
+                "&:hover": {
+                  cursor: "pointer",
+                  color: palette.primary.light,
+                },
+              }}
+            >
+              {isLogin
+                ? "Don't have an account? Sign Up here."
+                : "Already have an account? Login here."}
+            </Typography>
+            </Box>
             </form>
         )}
      </Formik>
