@@ -18,8 +18,6 @@ import {
     LightMode,
     Notifications,
     Help,
-    Menu,
-    Close,
     Message
 } from '@mui/icons-material'
 
@@ -43,8 +41,8 @@ const Navbar = () =>{
     const PrimaryLight = theme.palette.primary.light
     const alt = theme.palette.background.alt;
 
-    // const fullname = `${user.firstname} ${user.lastname}`
-    const fullname = "me"
+     const fullname = `${user.firstname} ${user.lastname}`
+    //const fullname = "me"
 
     return <FlexBetween padding="1rem 6%" backgroundColor={alt}>
         <FlexBetween gap="1.75rem">
@@ -109,6 +107,7 @@ const Navbar = () =>{
                             <Typography>{fullname}</Typography>
                         </MenuItem>
                         <MenuItem onClick={() =>dispatch(setLogout())}>Log out</MenuItem>
+
                     </Select>
                 </FormControl>
             </FlexBetween>
