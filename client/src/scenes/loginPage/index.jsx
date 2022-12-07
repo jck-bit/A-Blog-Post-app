@@ -1,7 +1,5 @@
 import {
     Box,
-    Button,
-    TextField,
     useMediaQuery,
     Typography,
     useTheme,
@@ -18,7 +16,7 @@ const Login = () =>{
         <Box width="100%" backgroundColor={theme.palette.background.alt} p="1rem 6%" textAlign="center">
             <Typography 
             fontWeight="bold"
-            fontSize="320px"
+            fontSize="32px"
             color="primary"
             >
                 sociopidia
@@ -34,9 +32,11 @@ const Login = () =>{
             <Typography fontWeight="500" variant="h5" sx={{mb: "1.5rem"}}>
                 Welcome to the social media of sociopaths
             </Typography>
+            <Form/>
         </Box>
     </Box>
     )
 }
 
 export default Login
+
