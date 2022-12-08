@@ -100,7 +100,7 @@ export default function Form() {
       if(isRegister) await register(values, onSubmitProps)
     }
 
-  return (
+    return (
     <Formik onSubmit={handleFormSubmit}
       initialValues ={isLogin ? initalValueLogin : initialValueRegister}
       validationSchema ={isLogin ? loginSchema : registerSchema}
@@ -195,6 +195,7 @@ export default function Form() {
                                   ) : (
                                     <FlexBetween>
                                       <Typography>{values.picture.name}</Typography>
+
                                       <EditOutlinedIcon />
                                     </FlexBetween>
                                   )}
