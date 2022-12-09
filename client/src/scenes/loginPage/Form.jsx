@@ -57,34 +57,35 @@ export default function Form() {
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
-    //formData allows to send form info with image
+    // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
-    const saved_user_response = await fetch(
+
+    const savedUserResponse = await fetch(
       "http://localhost:3500/auth/register",
       {
         method: "POST",
         body: formData,
       }
     );
-    const saved_user = await saved_user_response.json();
-
+    const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
-    if (saved_user) {
+
+    if (savedUser) {
       setPageType("login");
     }
   };
 
   const login = async (values, onSubmitProps) => {
-    const logged_in_response = await fetch("http://localhost:3500/auth/login", {
+    const loggedInResponse = await fetch("http://localhost:3500/auth/login", {
       method: "POST",
-      headers: { "content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
-    const loggedIn = await logged_in_response.json();
+    const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
@@ -96,6 +97,7 @@ export default function Form() {
       navigate("/home");
     }
   };
+
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);
