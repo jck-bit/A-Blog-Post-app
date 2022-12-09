@@ -63,7 +63,7 @@ mongoose.connection.once('open', () =>{
     app.listen(PORT, () => console.log(`listening on port ${PORT}`))
   
    /* ADD DATA ONE TIME*/  
-   //User.insertMany(users);
+  // User.insertMany(users);
    //Post.insertMany(posts);
 
 })
