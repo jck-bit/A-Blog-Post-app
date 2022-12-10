@@ -15,9 +15,7 @@ export const register = async (req, res) => {
       location,
       occupation,
     } = req.body;
-
-    
-
+   
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
@@ -36,7 +34,6 @@ export const register = async (req, res) => {
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
 };
-
 
 export const login = async (req, res) =>{
     try {
