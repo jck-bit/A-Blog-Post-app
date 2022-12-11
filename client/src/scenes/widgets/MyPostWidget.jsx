@@ -20,7 +20,6 @@ import {
     Button
 } from "@mui/material"
 
-
 import Dropzone from "react-dropzone"
 import FlexBetween from "../../components/FlexBetween"
 import UserImage from "../../components/UserImageWidget"
