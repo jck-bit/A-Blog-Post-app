@@ -7,7 +7,8 @@ import UserWidget from "../widgets/UserWidgets"
 const HomePage = () =>{
     const isNonMobileScreens = useMediaQuery("(min-width:100px)")
     const {_id, picturePath} = useSelector((state) => state.user)
-    return (<Box>
+    return (
+    <Box>
         <Navbar/>
         <Box 
           width="100%"
@@ -16,10 +17,10 @@ const HomePage = () =>{
           gap="0.5rem"
           justifyContent="space-between"
          >
-            <Box>
+           <Box>
               <UserWidget userId={_id} picturePath={picturePath}/>
             </Box>
-         </Box>
+         
          <Box
            flexBasis={isNonMobileScreens ? "42%" : undefined}
            mt={isNonMobileScreens ? undefined : "2rem"}
@@ -29,7 +30,9 @@ const HomePage = () =>{
          {isNonMobileScreens && (
             <Box flexBasis="26%"></Box>
          )}
-    </Box>)
+       </Box>
+    </Box>
+    )
 }
 
 export default HomePage

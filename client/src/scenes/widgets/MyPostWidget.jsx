@@ -8,6 +8,7 @@ import {
     MoreHorizOutlined
 } from "@mui/icons-material"
 
+
 import {
     Box, 
     Divider, 
@@ -15,7 +16,8 @@ import {
     InputBase, 
     useTheme,
     IconButton, 
-    useMediaQuery
+    useMediaQuery,
+    Button
 } from "@mui/material"
 
 import Dropzone from "react-dropzone"
@@ -26,9 +28,10 @@ import { useState } from "react"
 import { useDispatch,useSelector } from "react-redux"
 import { setPosts } from "../../state"
 
+
 const MyPostWidget = ({picturePath}) => {
     const dispatch = useDispatch()
-    const [ismage, setIsimage] = useState(false)
+    const [isImage, setIsimage] = useState(false)
     const [image, setimage] = useState(null);
     const [post, setPost] = useState("");
     const {palette} = useTheme();
@@ -75,14 +78,96 @@ const MyPostWidget = ({picturePath}) => {
               }}
             />
         </FlexBetween>
-        {ismage &&(
+        {isImage &&(
             <Box 
               borderRadius="5px"
               border={`1px solid ${medium}`}
               mt="1rem"
               p="1rem"
-            ></Box>
+            >
+                <Dropzone
+                    acceptedFiles=".jpg,.jpeg,.png"
+                    multiple={false}
+                    onDrop={(acceptedFiles) =>
+                      setimage("picture", acceptedFiles[0])
+                    }
+                  >
+                    {({ getRootProps, getInputProps }) => (
+                    <FlexBetween>
+                      <Box
+                        {...getRootProps()}
+                        border={`2px dashed ${palette.primary.main}`}
+                        p="1rem"
+                        width="100%"
+                        sx={{ "&:hover": { cursor: "pointer" } }}
+                      >
+                        <input {...getInputProps()} />
+                        {!image ? (
+                          <p>Add Image Here</p>
+                        ) : (
+                          <FlexBetween>
+                            <Typography>{image.name}</Typography>
+                            <EditOutlined/>
+                          </FlexBetween>
+                        )}
+                      </Box>
+                      {image && (
+                        <IconButton 
+                           onClick={() =>setimage(null)}
+                           sx={{width: "15%"}}
+                        >
+                            <DeleteOutlined/>
+                        </IconButton>
+                      )}
+                    </FlexBetween>
+                    )}
+                  </Dropzone>
+            </Box>
         )}
+        <Divider sx={{margin: "1.25rem 0"}} />
+
+        <FlexBetween>
+            <FlexBetween gap="0.25rem" onClick={() =>setIsimage(!isImage)}>
+                <ImageOutlined sx={{ color:mediumMain }} />
+                <Typography
+                  color={mediumMain}
+                  sx={{ "&:hover":{cursor:"pointer", color:palette.primary.dark}}}
+                >
+                    Image
+                </Typography>
+            </FlexBetween>
+            {isNonMobileScreens ? (
+                <>
+                  <FlexBetween gap="0.25rem">
+                    <GifBoxOutlined  sx={{ color: mediumMain}}/>
+                    <Typography color={mediumMain}>Clip</Typography>
+                  </FlexBetween>
+
+                  <FlexBetween gap="0.25rem">
+                    <AttachFileOutlined  sx={{ color: mediumMain}}/>
+                    <Typography color={mediumMain}>Attachment</Typography>
+                  </FlexBetween>
+
+                  <FlexBetween gap="0.25rem">
+                    <MicOutlined  sx={{ color: mediumMain}}/>
+                    <Typography color={mediumMain}>Audio</Typography>
+                  </FlexBetween>
+                </>
+            ):(
+             <FlexBetween gap="0.25rem">
+                <MoreHorizOutlined sx={{ color:mediumMain }}/>
+             </FlexBetween>
+            )}
+            <Button
+              disabled={!post}
+              onClick={handlePost}
+              sx={{
+                color:palette.background.light,
+                backgroundColor:palette.primary.alt,
+                borderRadius:  "3rem"              
+              }}            
+            >Post</Button>
+        </FlexBetween>
     </WidgetWrapper>
   )
 }
