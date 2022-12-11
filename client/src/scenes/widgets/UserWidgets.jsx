@@ -32,6 +32,7 @@ const UserWidget = ({userId, picturePath}) =>{
           const data = await response.json()
           setUser(data)
     }
+    
     useEffect(() =>{
         getUser()
     }, [])
