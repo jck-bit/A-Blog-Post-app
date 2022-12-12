@@ -58,6 +58,7 @@ const PostWidget = ({
         subtitle={location}
         userPicturePath={userPicturePath}
       />
+
       <Typography color={main} sx={{ mt: "1rem" }}>
         {description}
       </Typography>
@@ -69,6 +70,7 @@ const PostWidget = ({
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
           src={`http://localhost:3500/assets/${picturePath}`}
         />
+        
       )}
       <FlexBetween mt="0.25rem">
         <FlexBetween gap="1rem">
