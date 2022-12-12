@@ -1,9 +1,10 @@
 import { PersonAddOutlined,PersonremovedOutlined } from "@mui/icons-material";
 import { Box,Typography, IconButton,useTheme } from "@mui/material";
-import state, { setFriends } from "../state";
+import  { setFriends } from "../state";
 import { useDispatch, useSelector } from "react-redux";
 import UserImage from "./UserImageWidget";
 import { useNavigate } from "react-router-dom";
+import FlexBetween from "./FlexBetween";
 
 
 const Friend = ({friendId, name, subtitle, userPicturePath}) => {
@@ -24,15 +25,26 @@ const Friend = ({friendId, name, subtitle, userPicturePath}) => {
     const patchFriend = async () =>{
         const response = await fetch(`http://localhost:3500/users/${_id}/${friendId}`,{
             method:"PATCH",
+
             headers:{
                 Authorization: `Bearer ${token}`,
                 "content-Type":"application/json"
             }
         })
+        const data = await response.json();
+        dispatch(setFriends({ friends: data}));
     }
 
   return (
-    <div>Friend</div>
+    <FlexBetween gap="1rem">
+        <UserImage image={userPicturePath} size="55px" />
+        <Box 
+          onClick={() =>{
+            navigate(`/profile/${friendId}`)
+            // i have no idea what am doing...oh god help me
+            navigate(0);
+          }}></Box>
+    </FlexBetween>
   )
 }
 
