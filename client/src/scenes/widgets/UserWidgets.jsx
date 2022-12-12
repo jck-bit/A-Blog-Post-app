@@ -53,6 +53,7 @@ const UserWidget = ({userId, picturePath}) =>{
     
     return(
     <WidgetWrapper>
+    <Box >
       <Box>
       <FlexBetween
          gap="0.5rem"
@@ -144,7 +145,7 @@ const UserWidget = ({userId, picturePath}) =>{
                 <EditOutlined sx={{color: main}}/>
             </FlexBetween>
         </Box>
-    
+    </Box>
 </WidgetWrapper>
     )
 }
