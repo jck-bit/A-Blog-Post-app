@@ -1,11 +1,10 @@
-import { PersonAddOutlined,PersonremovedOutlined } from "@mui/icons-material";
+import { PersonAddOutlined,PersonRemoveOutlined } from "@mui/icons-material";
 import { Box,Typography, IconButton,useTheme } from "@mui/material";
 import  { setFriends } from "../state";
 import { useDispatch, useSelector } from "react-redux";
 import UserImage from "./UserImageWidget";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
-
 
 const Friend = ({friendId, name, subtitle, userPicturePath}) => {
 
@@ -19,7 +18,8 @@ const Friend = ({friendId, name, subtitle, userPicturePath}) => {
     const {palette } = useTheme();
     const primaryLight = palette.primary.light;
     const primarydark = palette.neutral.dark
-    const main = palette.neutral.medium
+    const main = palette.neutral.main
+    const medium = palette.neutral.medium
 
     const isFriend = friends.find((friend) => friend._id === friendId)
     const patchFriend = async () =>{
@@ -36,14 +36,42 @@ const Friend = ({friendId, name, subtitle, userPicturePath}) => {
     }
 
   return (
-    <FlexBetween gap="1rem">
+    <FlexBetween>
+     <FlexBetween gap="1rem">
         <UserImage image={userPicturePath} size="55px" />
         <Box 
           onClick={() =>{
             navigate(`/profile/${friendId}`)
             // i have no idea what am doing...oh god help me
             navigate(0);
-          }}></Box>
+          }}>
+            <Typography 
+             color={main}     
+             variant="h5" 
+             fontWeight="500"
+             sx={{
+                "&:hover":{
+                    color:palette.primary.light,
+                    cursor:"pointer"
+                }
+             }}
+            >
+                {name}
+            </Typography>
+            <Typography color={medium} fontSize="0.75rem">
+                {subtitle}
+            </Typography>
+          </Box>
+     </FlexBetween>
+     <IconButton onClick={() =>patchFriend}
+       sx={{ backgroundColor:primaryLight, p: "0.6rem" }}
+      >
+         {isFriend ? (
+          <PersonRemoveOutlined sx={{ color: primarydark}}/>
+         ):(
+          <PersonAddOutlined sx={{ color: primarydark}}/>
+         )}
+      </IconButton>
     </FlexBetween>
   )
 }

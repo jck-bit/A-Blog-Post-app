@@ -16,6 +16,7 @@ const PostsWidgets = ({userId, isProfile = false}) => {
         });
 
         const data = await response.json()
+        console.log(data)
         dispatch(setPosts({ posts: data }))
     }
 
@@ -58,7 +59,7 @@ const PostsWidgets = ({userId, isProfile = false}) => {
             description = {description}
             location = {location}
             occupation = {occupation}
-            picturePath = {picturePath}
+            //picturePath = {picturePath}
             userPicturePath={userPicturePath}
             likes = {likes}
             comments={comments}
@@ -70,3 +71,5 @@ const PostsWidgets = ({userId, isProfile = false}) => {
 }
 
 export default PostsWidgets
+
+
