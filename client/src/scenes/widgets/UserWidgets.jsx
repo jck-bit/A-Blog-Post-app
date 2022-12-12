@@ -87,7 +87,7 @@ const UserWidget = ({userId, picturePath}) =>{
       <Divider/>
 
         <Box p="1rem 0">
-            <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
+            <Box display="flex" alignItems="center" gap="1rem" mb="2rem">
                 <LocationOnOutlined fontSize="large" sx={{color: main}} />
                 <Typography color={medium}>{location}</Typography>
             </Box>
@@ -99,12 +99,12 @@ const UserWidget = ({userId, picturePath}) =>{
 
         <Divider/>
         <Box padding="1rem">
-            <FlexBetween mb="0.5rem">
+            <FlexBetween mb="2rem">
                 <Typography color={medium}>Profile views</Typography>
                 <Typography color={main} fontWeight="500">{viewedProfile}</Typography>
             </FlexBetween>
 
-            <FlexBetween>
+            <FlexBetween >
                 <Typography color={medium}>post impressions</Typography>
                 <Typography color={main} fontWeight="500">
                   {impressions}
@@ -118,7 +118,7 @@ const UserWidget = ({userId, picturePath}) =>{
                 social Profile
             </Typography>
 
-            <FlexBetween gap="1rem" mb="0.5rem">
+            <FlexBetween gap="1rem" mb="2rem">
                 <FlexBetween gap="1rem">
                     <img src="../assets/twitter.png"alt="twitter"/>
                     <Box>
@@ -131,7 +131,7 @@ const UserWidget = ({userId, picturePath}) =>{
                 <EditOutlined sx={{color: main}}/>
             </FlexBetween>
 
-            <FlexBetween gap="1rem" mb="0.5rem">
+            <FlexBetween gap="1rem" mb="2rem">
                 <FlexBetween gap="1rem">
                     <img src="../assets/linkedin.png"alt="linkedin"/>
                     <Box>
@@ -144,6 +144,7 @@ const UserWidget = ({userId, picturePath}) =>{
                 <EditOutlined sx={{color: main}}/>
             </FlexBetween>
         </Box>
+    
 </WidgetWrapper>
     )
 }
