@@ -29,6 +29,10 @@ const UserSchema = new mongoose.Schema({
         type:String,
         default:"",
     },
+    date:{
+        type:Date,
+        default:new Date()
+    },
     friends:{
         type:Array,
         default:[]
