@@ -32,7 +32,7 @@ export const createPost = async(req,res) =>{
 
 export const getFeedPosts = async(req,res) =>{
     try {
-        const posts = await Post.find();
+        const posts = await Post.find().sort({createdAt : 'descending'}).lean()
         if(!posts?.length){
             return res.status(400).json({msg:"No posts Available"})
         }

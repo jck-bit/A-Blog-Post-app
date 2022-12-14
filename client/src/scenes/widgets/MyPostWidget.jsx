@@ -17,8 +17,15 @@ import {
     useTheme,
     IconButton, 
     useMediaQuery,
-    Button
+    Button,
+    FormControl
 } from "@mui/material"
+
+
+import TextareaAutosize from '@mui/base/TextareaAutosize';
+// or
+
+
 
 import Dropzone from "react-dropzone"
 import FlexBetween from "../../components/FlexBetween"
@@ -34,6 +41,7 @@ const MyPostWidget = ({picturePath}) => {
     const [isImage, setIsimage] = useState(false)
     const [image, setimage] = useState(null);
     const [post, setPost] = useState("");
+    const [title, setTitle] = useState("")
     const {palette} = useTheme();
     const {_id} = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
@@ -44,6 +52,7 @@ const MyPostWidget = ({picturePath}) => {
     const handlePost = async () =>{
         const formData = new FormData();
         formData.append("userId", _id)
+        formData.append("title", title)
         formData.append("description", post)
         
         if(image) {
@@ -61,22 +70,39 @@ const MyPostWidget = ({picturePath}) => {
         dispatch(setPosts({ posts }))
         setimage(null);
         setPost("")
+        setTitle("")
     }
   return (
     <WidgetWrapper>
         <FlexBetween gap="1.5rem">
-            <UserImage image={picturePath}/>
+          <UserImage image={picturePath} />
+            <Box>
             <InputBase
-              placeholder="What's on your Mind"
-              onChange={(e) =>setPost(e.target.value)}      
-              value={post}
+              placeholder="Title"
+              onChange={(e) =>setTitle(e.target.value)}      
+              value={title}
               sx={{
                 width: "100%",
                 backgroundColor:palette.neutral.light,
-                borderRadius:"2rem",
-                padding:"1rem 2rem"
+                borderRadius:"1rem",
+                padding:"1rem 2rem",
+                marginBottom:"1rem"
               }}
             />
+            <InputBase
+              placeholder="Blog Post"
+              onChange={(e) =>setPost(e.target.value)}      
+              value={post}
+              multiline={true}
+              sx={{
+                textAlign:"end",
+                width: "100%",
+                backgroundColor:palette.neutral.light,
+                borderRadius:"1rem",
+                padding:"3rem 2rem"
+              }}
+            />
+            </Box>
         </FlexBetween>
         {isImage &&(
             <Box 

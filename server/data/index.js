@@ -149,8 +149,9 @@ export const posts = [
     firstname: "Steve",
     lastname: "Ralph",
     location: "New York, CA",
-    title:"this is my first post",
-    description: "Some really long random description",
+    title:"Http Methods",
+    description: `There are many different HTTP status codes, but some of the most commonly used ones include   200 OK: This is the most common HTTP status code, and indicates that the 
+     request was successful and the server was able to fulfill it.   301 Moved Permanently: This status code is used when a resource has been permanently moved to a new location. The client should use the new URL to access the resource in the future. 404 Not Found: This status code indicates that the server was unable to find the requested resource. This typically means that the URL is incorrect or the resource no longer exists.500 Internal Server Error: This status code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request. This is a general-purpose error code that is typically used when no more specific message is suitable.`,
     picturePath: "post1.jpeg",
     userPicturePath: "p3.jpeg",
     likes: new Map([
