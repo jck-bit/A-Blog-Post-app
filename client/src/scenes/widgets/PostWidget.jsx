@@ -19,6 +19,7 @@ const PostWidget = ({
   postId,
   postUserId,
   name,
+  title,
   description,
   location,
   picturePath,
@@ -58,7 +59,9 @@ const PostWidget = ({
         subtitle={location}
         userPicturePath={userPicturePath}
       />
-
+      <Typography color={main} sx={{ mt: "1rem" }} fontWeight="bold" fontSize="1rem">
+        {title}
+      </Typography>
       <Typography color={main} sx={{ mt: "1rem" }}>
         {description}
       </Typography>

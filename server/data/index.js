@@ -149,6 +149,7 @@ export const posts = [
     firstname: "Steve",
     lastname: "Ralph",
     location: "New York, CA",
+    title:"this is my first post",
     description: "Some really long random description",
     picturePath: "post1.jpeg",
     userPicturePath: "p3.jpeg",
@@ -170,6 +171,7 @@ export const posts = [
     firstname: "Whatcha",
     lastname: "Doing",
     location: "Korea, CA",
+    title:"this is my first post",
     description:
       "Another really long random description. This one is longer than the previous one.",
     picturePath: "post2.jpeg",
@@ -193,6 +195,7 @@ export const posts = [
     firstname: "Jane",
     lastname: "Doe",
     location: "Utah, CA",
+    title:"this is my first post",
     description:
       "This is the last really long random description. This one is longer than the previous one.",
     picturePath: "post3.jpeg",
@@ -217,6 +220,7 @@ export const posts = [
     firstname: "Harvey",
     lastname: "Dunn",
     location: "Los Angeles, CA",
+    title:"this is my first post",
     description:
       "This is the last really long random description. This one is longer than the previous one. Man I'm bored. I'm going to keep typing until I run out of things to say.",
     picturePath: "post4.jpeg",
@@ -241,6 +245,7 @@ export const posts = [
     firstname: "Carly",
     lastname: "Vowel",
     location: "Chicago, IL",
+    title:"this is my first post",
     description:
       "Just a short description. I'm tired of typing. I'm going to play video games now.",
     picturePath: "post5.jpeg",
@@ -265,6 +270,7 @@ export const posts = [
     firstname: "Jessica",
     lastname: "Dunn",
     location: "Washington, DC",
+    title:"this is my first post",
     description:
       "For the last time, I'm going to play video games now. I'm tired of typing. I'm going to play video games now.",
     picturePath: "post6.jpeg",
