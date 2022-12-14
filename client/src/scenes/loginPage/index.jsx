@@ -19,7 +19,7 @@ const Login = () =>{
             fontSize="32px"
             color="primary"
             >
-                sociopidia
+               MyBlogPydia
             </Typography>
         </Box>
         <Box 
@@ -30,7 +30,7 @@ const Login = () =>{
            backgroundColor={theme.palette.background.alt}
         >
             <Typography fontWeight="500" variant="h5" sx={{mb: "1.5rem"}}>
-                Welcome to the social media of sociopaths
+                Sign in and write your blogs
             </Typography>
             <Form/>
         </Box>

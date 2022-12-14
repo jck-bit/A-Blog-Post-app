@@ -4,7 +4,7 @@ import User from '../models/User.js'
 //create 
 export const createPost = async(req,res) =>{
     try {
-        const { userId, description, picturePath } = req.body
+        const { userId, description, picturePath, title } = req.body
         
         const user = await User.findById(userId)
         
@@ -13,6 +13,7 @@ export const createPost = async(req,res) =>{
             firstname:user.firstname,
             lastname:user.lastname,
             location:user.location,
+            title,
             description,
             userPicturePath:user.picturePath,
             picturePath,
