@@ -4,6 +4,7 @@ import Navbar from "../navabr/index"
 import MyPostWidget from "../widgets/MyPostWidget"
 import UserWidget from "../widgets/UserWidgets"
 import PostsWidgets from "../widgets/PostsWidgets"
+import AdvertWidget from "../widgets/AdvertWidget"
 
 const HomePage = () =>{
     const isNonMobileScreens = useMediaQuery("(min-width:100px)")
@@ -11,7 +12,6 @@ const HomePage = () =>{
     return (
     <>
         <Navbar/>
-        
         <Box 
           width="100%"
           padding="2rem 6%"
@@ -24,8 +24,7 @@ const HomePage = () =>{
            marginTop="5rem"
            >
            <UserWidget userId={_id} picturePath={picturePath}/>
-          </Box>
-                
+          </Box>   
          
          <Box
            flexBasis={isNonMobileScreens ? "42%" : undefined}
@@ -35,9 +34,15 @@ const HomePage = () =>{
           >
             <MyPostWidget picturePath={picturePath}/>
             <PostsWidgets userId={_id}/>
+            
           </Box>
          {isNonMobileScreens && (
-            <Box flexBasis="26%"></Box>
+            <Box flexBasis="26%" marginTop="5rem">
+              <AdvertWidget/>
+                  <Box m="2rem 0" />
+        
+          </Box>
+            
          )}
        </Box>
     </>

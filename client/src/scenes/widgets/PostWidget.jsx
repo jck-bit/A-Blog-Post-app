@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {
      ChatBubbleOutlineOutlined, 
      ShareOutlined,
@@ -14,7 +15,6 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPost } from '../../state'
 
-
 const PostWidget = ({
   postId,
   postUserId,
@@ -22,7 +22,6 @@ const PostWidget = ({
   title,
   description,
   location,
-  occupation,
   picturePath,
   userPicturePath,
   likes,
@@ -118,7 +117,6 @@ const PostWidget = ({
       )}
     </WidgetWrapper>
   );
-
 
 }
 

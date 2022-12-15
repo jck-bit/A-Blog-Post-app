@@ -56,6 +56,10 @@ export const addRemoveFriend = async(req,res) =>{
         const friends = await Promise.all(
             user.friends.map((id) => user.findById(id))
         )
+
+        if(!friends.length){
+            return res.status(400).json({message:"No friends"})
+        }
         const formmatedFriends = friends.map(
             ({_id, firstname, lastname, occupation, location, picturePath}) =>{
                 return {_id, firstname, lastname, occupation, location, picturePath}
