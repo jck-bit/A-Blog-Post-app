@@ -33,7 +33,7 @@ const ProfilePage = () => {
     return (
       <>
       <Navbar />
-      <Box>
+      <Box paddingTop="5rem">
         <Box
           
           width="100%"
