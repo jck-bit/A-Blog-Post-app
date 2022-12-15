@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPosts } from '../../state'
 import PostWidget from './PostWidget'
 
-
 const PostsWidgets = ({userId, isProfile = false}) => {
     const dispatch  = useDispatch()
     const posts  = useSelector((state) =>state.posts)
@@ -16,6 +15,7 @@ const PostsWidgets = ({userId, isProfile = false}) => {
         });
 
         const data = await response.json()
+        console.log(data)
         dispatch(setPosts({ posts: data }))
     }
 
@@ -34,31 +34,20 @@ const PostsWidgets = ({userId, isProfile = false}) => {
         }else{
             getPosts()
         }
-    },[])  //eslint-disable-line react-hooks
+    },[])  //eslint-disable-liconst setPost: (value: React.SetStateAction<string>) => voidne react-hooks
   return (
     <>
-      {posts.map(
-        ({
-            _id,
-            userId,
-            firstname,
-            description,
-            location,
-            occupation,
-            userPicturePath,
-            lastname,
-            likes,
-            comments
-        }) =>(
+      {posts.map(({_id,userId,picturePath,firstname,description, location, title, occupation, userPicturePath, lastname,likes,comments}) =>(
             <PostWidget 
             key={_id}
             postId = {_id}
             postUserId = {userId}
             name = {`${firstname} ${lastname}`}
+            title={title}
             description = {description}
             location = {location}
             occupation = {occupation}
-            //picturePath = {picturePath}
+            picturePath = {picturePath}
             userPicturePath={userPicturePath}
             likes = {likes}
             comments={comments}
@@ -70,5 +59,3 @@ const PostsWidgets = ({userId, isProfile = false}) => {
 }
 
 export default PostsWidgets
-
-

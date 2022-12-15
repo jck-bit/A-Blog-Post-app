@@ -22,11 +22,6 @@ import {
 } from "@mui/material"
 
 
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-// or
-
-
-
 import Dropzone from "react-dropzone"
 import FlexBetween from "../../components/FlexBetween"
 import UserImage from "../../components/UserImageWidget"
